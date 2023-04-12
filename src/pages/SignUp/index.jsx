@@ -9,8 +9,15 @@ export const SignUp = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
+  function handleSubmit(e) {
+    e.preventDefault()
+
+
+
+  }
+
   return (
-    <FormContainer>
+    <FormContainer onSubmit={handleSubmit}>
       <div className="login">
         <div className="login-area">
           <img src={logo} alt="Logo do sistema" />
