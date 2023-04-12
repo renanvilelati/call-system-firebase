@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import logo from '../../assets/logo.png';
 import { Link } from 'react-router-dom';
-import { SignInContainer } from './styles';
+import { FormContainer, Form } from '../../styles/Form';
 
 export const SignIn = () => {
 
@@ -9,32 +9,32 @@ export const SignIn = () => {
   const [password, setPassword] = useState('')
 
   return (
-    <SignInContainer>
+    <FormContainer>
       <div className="login">
         <div className="login-area">
           <img src={logo} alt="Logo do sistema" />
         </div>
 
-        <form>
-          <h1>Log in</h1>
+        <Form>
+          <h1>Login Account</h1>
           <input
             type="text"
             value={email}
             onChange={() => setEmail(e.target.value)}
-            placeholder='Enter yout email'
+            placeholder='Enter your email'
           />
           <input
             type="password"
             autoComplete='off'
             value={password}
             onChange={() => setPassword(e.target.value)}
-            placeholder='Enter yout password'
+            placeholder='Enter your password'
           />
           <button>Log in</button>
-        </form>
+        </Form>
 
         <Link to='/register'>Create an account</Link>
       </div>
-    </SignInContainer>
+    </FormContainer>
   );
 };
