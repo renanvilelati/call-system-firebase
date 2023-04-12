@@ -12,6 +12,11 @@ export const SignUp = () => {
   function handleSubmit(e) {
     e.preventDefault()
 
+    if (name.trim() !== '' && email.trim() !== '' && password.trim() !== '') {
+      alert('Cadastrado')
+    } else {
+      alert('Preencha os campos')
+    }
 
 
   }

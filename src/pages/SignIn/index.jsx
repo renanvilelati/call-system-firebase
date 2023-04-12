@@ -1,12 +1,27 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import logo from '../../assets/logo.png';
 import { Link } from 'react-router-dom';
 import { FormContainer, Form } from '../../styles/Form';
+
+import { AuthContext } from '../../contexts/auth'
 
 export const SignIn = () => {
 
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+
+  const { signIn } = useContext(AuthContext)
+
+  function handleSignIn(e) {
+    e.preventDefault()
+
+    if (email.trim() !== '' && password.trim() !== '') {
+      signIn(email, password)
+    } else {
+      alert('Erro ao tentar logar')
+    }
+
+  }
 
   return (
     <FormContainer>
@@ -15,19 +30,19 @@ export const SignIn = () => {
           <img src={logo} alt="Logo do sistema" />
         </div>
 
-        <Form>
+        <Form onSubmit={handleSignIn}>
           <h1>Login Account</h1>
           <input
             type="text"
             value={email}
-            onChange={() => setEmail(e.target.value)}
+            onChange={(e) => setEmail(e.target.value)}
             placeholder='Enter your email'
           />
           <input
             type="password"
             autoComplete='off'
             value={password}
-            onChange={() => setPassword(e.target.value)}
+            onChange={(e) => setPassword(e.target.value)}
             placeholder='Enter your password'
           />
           <button>Log in</button>
