@@ -10,13 +10,13 @@ export const SignIn = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
-  const { signIn } = useContext(AuthContext)
+  const { signIn, loadingAuth } = useContext(AuthContext)
 
-  function handleSignIn(e) {
+  async function handleSignIn(e) {
     e.preventDefault()
 
     if (email.trim() !== '' && password.trim() !== '') {
-      signIn(email, password)
+      await signIn(email, password)
     } else {
       alert('Erro ao tentar logar')
     }
@@ -45,7 +45,9 @@ export const SignIn = () => {
             onChange={(e) => setPassword(e.target.value)}
             placeholder='Enter your password'
           />
-          <button>Log in</button>
+          <button>
+            {loadingAuth ? 'Loading...' : 'Log in'}
+          </button>
         </Form>
 
         <Link to='/register'>Create an account</Link>
