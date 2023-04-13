@@ -1,7 +1,9 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import logo from '../../assets/logo.png';
 import { Link } from 'react-router-dom';
 import { FormContainer, Form } from "../../styles/Form"
+
+import { AuthContext } from '../../contexts/auth';
 
 export const SignUp = () => {
 
@@ -9,11 +11,13 @@ export const SignUp = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
-  function handleSubmit(e) {
+  const { signUp, loadingAuth } = useContext(AuthContext)
+
+  async function handleSubmit(e) {
     e.preventDefault()
 
     if (name.trim() !== '' && email.trim() !== '' && password.trim() !== '') {
-      alert('Cadastrado')
+      await signUp(name, email, password)
     } else {
       alert('Preencha os campos')
     }
@@ -34,23 +38,25 @@ export const SignUp = () => {
           <input
             type="text"
             value={name}
-            onChange={() => setName(e.target.value)}
+            onChange={(e) => setName(e.target.value)}
             placeholder='Enter your name'
           />
           <input
             type="text"
             value={email}
-            onChange={() => setEmail(e.target.value)}
+            onChange={(e) => setEmail(e.target.value)}
             placeholder='Enter your e-mail'
           />
           <input
             type="password"
             autoComplete='off'
             value={password}
-            onChange={() => setPassword(e.target.value)}
+            onChange={(e) => setPassword(e.target.value)}
             placeholder='Enter your password'
           />
-          <button>Sign up</button>
+          <button>
+            {loadingAuth ? 'Loading...' : 'Sign up'}
+          </button>
         </Form>
 
         <Link to='/'>Already have an account? <span> Sign in </span></Link>
