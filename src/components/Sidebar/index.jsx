@@ -1,20 +1,20 @@
-import avatarImg from '../../assets/avatar.png'
-
+import { useContext } from 'react'
 import { Link } from 'react-router-dom'
 
-import { useContext } from 'react'
+import { FiHome, FiUser, FiSettings } from 'react-icons/fi'
+import { SidebarContainer } from './styles'
+
 import { AuthContext } from '../../contexts/auth'
 
-import { FiHome, FiUser, FiSettings } from 'react-icons/fi'
+import avatarImg from '../../assets/avatar.png'
 
-import { DashboardContainer } from './styles'
 
-export const Header = () => {
+export const Sidebar = () => {
 
   const { user } = useContext(AuthContext)
 
   return (
-    <DashboardContainer>
+    <SidebarContainer>
       <div>
         <img src={user.avatarUrl === null ? avatarImg : user.avatarUrl} alt="User avatar" />
       </div>
@@ -33,6 +33,6 @@ export const Header = () => {
         <FiSettings color='#fff' size={24} />
         Perfil
       </Link>
-    </DashboardContainer>
+    </SidebarContainer>
   )
 }

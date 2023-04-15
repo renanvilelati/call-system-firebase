@@ -1,7 +1,7 @@
 import { useContext } from "react"
 import { AuthContext } from "../../contexts/auth"
 
-import { Header } from "../../components/Header"
+import { Sidebar } from "../../components/Sidebar"
 
 export const Dashboard = () => {
 
@@ -13,7 +13,7 @@ export const Dashboard = () => {
 
   return (
     <>
-      <Header />
+      <Sidebar />
       <h1>Dashboard</h1>
       <button onClick={handleLogout}>Sair</button>
     </>

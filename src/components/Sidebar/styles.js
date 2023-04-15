@@ -1,7 +1,8 @@
 import styled from "styled-components";
 
-export const DashboardContainer = styled.div`
+export const SidebarContainer = styled.div`
 
+  width: 200px;
   margin: 0;
   padding: 0;
   background-color: #181c2e;
@@ -11,7 +12,7 @@ export const DashboardContainer = styled.div`
 
 
 div{
-  background: url('../../assets/cover.png');
+  background-image: url('../../assets/cover.png');
   background-color: #181c2e;
   background-position: center;
   background-repeat: no-repeat;
@@ -57,5 +58,41 @@ a:hover{
 .content{
   margin-left: 200px;
   padding: 1px 16px;
+}
+
+@media screen and (max-width: 700px){
+  .sidebar{
+    width: 100%;
+    height: auto;
+    position: relative;
+  }
+
+  div.content{
+    margin-left: 0;
+  }
+
+  a{
+    float: left;
+  }
+
+  div{
+    display: none;
+  }
+
+  a svg{
+    display: none;
+  }
+}
+
+
+@media screen and (max-width: 400px){
+  a{
+    text-align: center;
+    float: none;
+  }
+  
+  a svg{
+    display: none;
+  }
 }
 `
